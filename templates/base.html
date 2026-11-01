@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Biblioteca de la asociación{% endblock %}</title>
+    <!-- Bootstrap personalizado con Sass -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap-custom.css' %}">
+</head>
+<body class="bg-light">
+    <header>
+        <nav class="navbar navbar-expand-lg bg-primary"
+             data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    Biblioteca de la asociación
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main class="container py-4">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="border-top py-3 mt-5">
+        <div class="container text-center text-muted">
+            <small>Aplicación de gestión de biblioteca</small>
+        </div>
+    </footer>
+
+    <!-- JavaScript de Bootstrap -->
+{#    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>#}
+</body>
+</html>

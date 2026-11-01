@@ -1,0 +1,13 @@
+﻿// Colores personalizados
+$primary: #355c4b;
+$secondary: #d9b88f;
+$success: #60876a;
+$light: #f7f5f0;
+$dark: #26352e;
+
+// Bordes y tipografía
+$border-radius: 0.75rem;
+$font-family-sans-serif: Arial, sans-serif;
+
+// Importar Bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap";
