@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "css:dev": "sass --watch static/scss/custom.scss static/css/bootstrap-custom.css",
+    "css:build": "sass --style=compressed --no-source-map static/scss/custom.scss static/css/bootstrap-custom.css",
+    "heroku-postbuild": "npm run css:build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,7 +14,8 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "bootstrap": "^5.3.8"
+    "bootstrap": "^5.3.8",
+     "sass": "^1.107.1"
   },
   "devDependencies": {
     "sass": "^1.107.1"

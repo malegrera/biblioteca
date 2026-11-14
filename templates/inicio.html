@@ -1,19 +1,83 @@
 ﻿{% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Inicio | Biblioteca{% endblock %}
 
 {% block content %}
-    <section class="text-center py-5">
-        <h1 class="display-4 fw-bold text-primary">
-            Biblioteca de la asociación
-        </h1>
 
-        <h2 class="h4 text-secondary mt-3">
-            Gestión de libros y préstamos
-        </h2>
+<section class="py-5 text-center">
+    <img src="{% static 'img/hero.png' %}"
+         alt="Ilustración de la biblioteca"
+         class="img-fluid rounded-3 mb-4"
+         width="1600"
+         height="600">
 
-        <p class="lead mt-4">
-            Aplicación web para consultar el catálogo y gestionar los préstamos de la biblioteca.
-        </p>
+    <h1 class="display-5 fw-bold text-primary mb-3">
+        Biblioteca de la asociación sindical
+    </h1>
+
+    <p class="lead text-secondary mb-4">
+        Consulta nuestro catálogo de libros y gestiona tus préstamos
+        de forma sencilla.
+    </p>
+
+    <div class="d-flex flex-wrap justify-content-center gap-2">
+        <a href="{% url 'catalogo' %}" class="btn btn-primary btn-lg">
+            Explorar catálogo
+        </a>
+
+        {% if user.is_authenticated %}
+            {% if user.is_staff %}
+                <a href="{% url 'admin:index' %}"
+                   class="btn btn-outline-primary btn-lg">
+                    Administración
+                </a>
+            {% else %}
+                <a href="{% url 'mis_prestamos' %}"
+                   class="btn btn-outline-primary btn-lg">
+                    Mis préstamos
+                </a>
+            {% endif %}
+        {% endif %}
+    </div>
+</section>
+
+
+    <section class="py-4">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <h2 class="h5 text-primary">Catálogo de libros</h2>
+                        <p class="card-text">
+                            Descubre los libros disponibles en la biblioteca.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <h2 class="h5 text-primary">Disponibilidad</h2>
+                        <p class="card-text">
+                            Consulta cuántos ejemplares hay disponibles
+                            de cada libro.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <h2 class="h5 text-primary">Mis préstamos</h2>
+                        <p class="card-text">
+                            Accede a tus préstamos activos y consulta
+                            tu historial de devoluciones.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 {% endblock %}

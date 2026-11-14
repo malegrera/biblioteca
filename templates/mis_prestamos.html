@@ -1,0 +1,52 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}Mis préstamos | Biblioteca{% endblock %}
+
+{% block content %}
+    <section class="py-5">
+        <h1 class="display-5 fw-bold text-primary mb-4">
+            Mis préstamos
+        </h1>
+
+        {% if prestamos %}
+            <div class="table-responsive">
+                <table class="table table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">Libro</th>
+                            <th scope="col">Fecha de préstamo</th>
+                            <th scope="col">Fecha de vencimiento</th>
+                            <th scope="col">Fecha de devolución</th>
+                            <th scope="col">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for prestamo in prestamos %}
+                            <tr>
+                                <td>{{ prestamo.ejemplar.libro.titulo }}</td>
+                                <td>{{ prestamo.fecha_prestamo|date:"d/m/Y" }}</td>
+                                <td>{{ prestamo.fecha_vencimiento|date:"d/m/Y" }}</td>
+                                <td>
+                                    {% if prestamo.fecha_devolucion %}
+                                        {{ prestamo.fecha_devolucion|date:"d/m/Y" }}
+                                    {% else %}
+                                        —
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if prestamo.fecha_devolucion %}
+                                        <span class="badge bg-success">Devuelto</span>
+                                    {% else %}
+                                        <span class="badge bg-warning text-dark">En préstamo</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>No tienes préstamos registrados.</p>
+        {% endif %}
+    </section>
+{% endblock %}

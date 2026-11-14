@@ -1,0 +1,65 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ libro.titulo }} | Biblioteca{% endblock %}
+
+{% block content %}
+    <section class="py-5">
+        <div class="row g-4">
+            <div class="col-md-4">
+                {% if libro.portada %}
+                    <img src="{{ libro.portada.url }}"
+                         class="img-fluid"
+                         alt="Portada de {{ libro.titulo }}">
+                {% else %}
+                    <img src="{% static 'img/sinportada.png' %}"
+                         class="img-fluid"
+                         alt="Portada no disponible">
+                {% endif %}
+            </div>
+
+            <div class="col-md-8">
+                <h1 class="display-5 fw-bold text-primary mb-4">
+                    {{ libro.titulo }}
+                </h1>
+
+                <p>
+                    <strong>Autores:</strong>
+                    {% for autor in libro.autores.all %}
+                        {{ autor.nombre }}{% if not forloop.last %}, {% endif %}
+                    {% empty %}
+                        Sin autores registrados
+                    {% endfor %}
+                </p>
+
+                <p><strong>ISBN:</strong> {{ libro.isbn }}</p>
+                <p><strong>Editorial:</strong> {{ libro.editorial }}</p>
+                <p><strong>Año de publicación:</strong> {{ libro.anio_publicacion }}</p>
+
+                <p>
+                    <strong>Categorías:</strong>
+                    {% for categoria in libro.categorias.all %}
+                        {{ categoria.nombre }}{% if not forloop.last %}, {% endif %}
+                    {% empty %}
+                        Sin categorías registradas
+                    {% endfor %}
+                </p>
+<p>
+    <strong>Disponibilidad:</strong>
+    {% if disponibles > 0 %}
+        <span class="text-success">
+            {{ disponibles }} ejemplar(es) disponible(s)
+        </span>
+    {% else %}
+        <span class="text-danger">
+            No disponible
+        </span>
+    {% endif %}
+</p>
+                <a href="{% url 'catalogo' %}" class="btn btn-primary mt-3">
+                    Volver al catálogo
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
