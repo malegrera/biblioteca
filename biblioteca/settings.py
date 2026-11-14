@@ -33,7 +33,7 @@ DEBUG = os.environ.get("DYNO") is None
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    "biblioteca-tfm.herokuapp.com",
+    "biblioteca-tfm-fe69317c448f.herokuapp.com",
 ]
 
 # Application definition
@@ -177,5 +177,5 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SECURE_SSL_REDIRECT = os.environ.get("DYNO") is not None
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://biblioteca-tfm.herokuapp.com",
+    "https://biblioteca-tfm-fe69317c448f.herokuapp.com",
 ]
