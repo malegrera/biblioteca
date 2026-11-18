@@ -1,0 +1,108 @@
+[
+{
+  "model": "principal.autor",
+  "pk": 1,
+  "fields": {
+    "nombre": "Manuel Catells"
+  }
+},
+{
+  "model": "principal.autor",
+  "pk": 2,
+  "fields": {
+    "nombre": "VVAA"
+  }
+},
+{
+  "model": "principal.categoria",
+  "pk": 1,
+  "fields": {
+    "nombre": "Sociología",
+    "descripcion": "Libros sobre la sociedad, las relaciones sociales y sus transformaciones."
+  }
+},
+{
+  "model": "principal.categoria",
+  "pk": 2,
+  "fields": {
+    "nombre": "Derecho",
+    "descripcion": ""
+  }
+},
+{
+  "model": "principal.libro",
+  "pk": 1,
+  "fields": {
+    "titulo": "La sociedad red: una visión global",
+    "isbn": "9788420647845",
+    "editorial": "Alianza Editorial",
+    "anio_publicacion": 2011,
+    "portada": "portadas/portadaprueba.png",
+    "autores": [
+      1
+    ],
+    "categorias": [
+      1
+    ]
+  }
+},
+{
+  "model": "principal.libro",
+  "pk": 2,
+  "fields": {
+    "titulo": "Estatuto de los trabajadores",
+    "isbn": "123456789123",
+    "editorial": "El Olivo Azul",
+    "anio_publicacion": 2002,
+    "portada": "",
+    "autores": [
+      2
+    ],
+    "categorias": [
+      2
+    ]
+  }
+},
+{
+  "model": "principal.ejemplar",
+  "pk": 1,
+  "fields": {
+    "libro": 1,
+    "codigo_inventario": "BIB-0001",
+    "estado": "activo"
+  }
+},
+{
+  "model": "principal.socio",
+  "pk": 1,
+  "fields": {
+    "usuario": 2,
+    "nombre": "Ana",
+    "apellidos": "Mena Varela",
+    "telefono": "600000000",
+    "fecha_alta": "2026-11-07"
+  }
+},
+{
+  "model": "principal.prestamo",
+  "pk": 1,
+  "fields": {
+    "socio": 1,
+    "ejemplar": 1,
+    "fecha_prestamo": "2026-11-07",
+    "fecha_vencimiento": "2026-11-21",
+    "fecha_devolucion": "2026-11-07"
+  }
+},
+{
+  "model": "principal.prestamo",
+  "pk": 2,
+  "fields": {
+    "socio": 1,
+    "ejemplar": 1,
+    "fecha_prestamo": "2026-11-05",
+    "fecha_vencimiento": "2026-11-20",
+    "fecha_devolucion": "2026-11-12"
+  }
+}
+]
